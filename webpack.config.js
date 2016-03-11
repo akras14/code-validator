@@ -1,5 +1,14 @@
 var path = require('path');
-var webpack = require('webpack');
+require('webpack');
+
+var babelQuery = {
+  presets: ["es2015", "react"],
+  plugins: [
+    'transform-es3-member-expression-literals',
+    'transform-es3-property-literals'
+  ]
+};
+
 module.exports = {
   entry: path.resolve(__dirname, 'src/main.jsx'),
   output: {
@@ -10,10 +19,7 @@ module.exports = {
     loaders: [{
       test: /\.jsx?$/,
       exclude: /node_modules/,
-      loader: 'babel',
-      query: {
-        presets: ['es2015','react']
-      }
+      loaders: ['es3ify', `babel?${JSON.stringify(babelQuery)}`]
     }]
   },
   debug: true,
