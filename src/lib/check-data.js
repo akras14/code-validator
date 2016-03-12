@@ -1,7 +1,7 @@
 class Checker {
   constructor(){
     if(window.Worker){
-      this.worker = new Worker('./src/lib/parse-webworker.js');
+      this.worker = new Worker('./src/lib/parse.js');
     }
   }
 
