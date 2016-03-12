@@ -22,6 +22,9 @@ module.exports = {
       loaders: ['es3ify', `babel?${JSON.stringify(babelQuery)}`]
     }]
   },
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
   debug: true,
   devtool: '#source-map'
 };
