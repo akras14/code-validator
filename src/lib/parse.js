@@ -1,5 +1,3 @@
-/* global importScripts */
-
 import * as esprima from 'esprima';
 
 self.onmessage = function(e) {

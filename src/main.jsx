@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import Editor from './components/Editor';
 import Feedback from './components/Feedback';
+import TestConfig from './components/Test-Config';
 import checkData from './lib/check-data';
 
 var errors = [];
@@ -23,6 +24,7 @@ checkData(test, function(errs){
 function renderView(){
   render(
     <div>
+      <TestConfig/>
       <Editor/>
       <Feedback errors = { errors } />
     </div>,
