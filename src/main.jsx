@@ -6,7 +6,19 @@ import checkData from './lib/check-data';
 
 var errors = [];
 
-checkData();
+var test = `
+  var test = "some javascript code";
+  if(test){
+    console.log("Test exists");
+  } else {
+    console.log("Test does not exist");
+  }
+`;
+
+checkData(test, function(errs){
+  console.log("Got errors");
+  console.log(errs);
+});
 
 render(
   <div>
