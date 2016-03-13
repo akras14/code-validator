@@ -16,14 +16,18 @@ var test = `
 `;
 
 checkData(test, function(errs){
-  console.log("Got errors");
-  console.log(errs);
+  errors = errs;
+  renderView();
 });
 
-render(
-  <div>
-    <Editor/>
-    <Feedback errors = { errors } />
-  </div>,
-  document.getElementById('root')
-);
+function renderView(){
+  render(
+    <div>
+      <Editor/>
+      <Feedback errors = { errors } />
+    </div>,
+    document.getElementById('root')
+  );
+}
+
+renderView();

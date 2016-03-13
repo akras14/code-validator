@@ -10,10 +10,13 @@ var babelQuery = {
 };
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/main.jsx'),
+  entry: {
+    main: path.resolve(__dirname, 'src/main.jsx'),
+    parse: path.resolve(__dirname, 'src/lib/parse.js')
+  },
   output: {
     path: path.resolve(__dirname, './build/'),
-    filename: 'bundle.js'
+    filename: '[name].bundle.js'
   },
   module: {
     loaders: [{
