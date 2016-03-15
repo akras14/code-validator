@@ -27,7 +27,8 @@ let defaultState = {
     options: [],
     first: "none",
     second: "none"
-  }
+  },
+  text: "//Please type your code here"
 };
 
 function generateList(){
@@ -69,6 +70,11 @@ export default function config(state = defaultState, action) {
       if(action.source === 'first' && action.value === 'none'){
         state.structure['second'] = 'none';
       }
+      return state;
+    case 'TEXT_UPDATE':
+      state.text = action.text;
+      return state;
+    case 'TEXT_VALIDATION':
       return state;
     default:
       return state;
