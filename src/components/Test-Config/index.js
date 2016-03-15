@@ -2,32 +2,23 @@ import React, {Component} from 'react';
 import List from './list';
 import Structure from './structure';
 
-//TODO: Expand and/or move to a shared module
-let supportedItems = [
-  {
-    name: 'Variable Declaration'
-  },
-  {
-    name: 'For Loop'
-  },
-  {
-    name: 'While Loop'
-  },
-  {
-    name: 'If Statement'
-  }
-];
-
 class TestConfig extends Component {
   render() {
+
+    let { store } = this.context;
+    let state = store.getState();
     return (
       <div>
-        <List type="Whitelist" items={supportedItems}/>
-        <List type="Blacklist" items={supportedItems}/>
-        <Structure items={supportedItems}/>
+        <List type="Whitelist" items={state.whitelist}/>
+        <List type="Blacklist" items={state.blacklist}/>
+        <Structure items={state.config}/>
       </div>
     );
   }
 }
+
+TestConfig.contextTypes = {
+  store: React.PropTypes.object
+};
 
 export default TestConfig;
