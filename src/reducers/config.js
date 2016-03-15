@@ -4,37 +4,46 @@ import 'babel-polyfill';
 let supportedItems = [
   {
     name: 'Variable Declaration',
-    value: 'VariableDeclaration',
-    checked: false,
-    disabled: false
+    value: 'VariableDeclaration'
   },
   {
     name: 'For Loop',
-    value: 'ForStatement',
-    checked: false,
-    disabled: false
+    value: 'ForStatement'
   },
   {
     name: 'While Loop',
-    value: 'WhileStatement',
-    checked: false,
-    disabled: false
+    value: 'WhileStatement'
   },
   {
     name: 'If Statement',
-    value: 'IfStatement',
-    checked: false,
-    disabled: false
+    value: 'IfStatement'
   }
 ];
 
 let defaultState = {
   whitelist: [],
   blacklist: [],
-  config: []
+  structure: {
+    options: [],
+    first: "none",
+    second: "none"
+  }
 };
-defaultState.whitelist = supportedItems.map(item => Object.assign({}, item));
-defaultState.blacklist = supportedItems.map(item => Object.assign({}, item));
+
+function generateList(){
+  return supportedItems.map(item => {
+    item = Object.assign({}, item);
+    item.checked = false;
+    item.disabled = false;
+    return item;
+  });
+}
+
+defaultState.whitelist = generateList();
+defaultState.blacklist = generateList();
+
+defaultState.structure.options.push(supportedItems.slice(1)); //Remove "var" from the list
+defaultState.structure.options.push(supportedItems.slice());
 
 function createNewLists(state){
   state.whitelist = state.whitelist.slice();
@@ -56,6 +65,10 @@ export default function config(state = defaultState, action) {
       updateLists(state.blacklist, state.whitelist, action.checked, action.key);
       return state;
     case 'CONFIG_UPDATE':
+      state.structure[action.source] = action.value;
+      if(action.source === 'first' && action.value === 'none'){
+        state.structure['second'] = 'none';
+      }
       return state;
     default:
       return state;
