@@ -7,6 +7,10 @@ import { createStore } from 'redux';
 import config from './reducers/config.js';
 import { Provider } from 'react-redux';
 
+//Initialize web worker on load, for IE8 support
+import checkData from './lib/check-data';
+checkData('', ()=>{});
+
 const store = createStore(config);
 store.subscribe(() => {
   renderView();
