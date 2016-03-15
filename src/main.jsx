@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import Editor from './components/Editor';
 import Feedback from './components/Feedback';
 import TestConfig from './components/Test-Config';
-import checkData from './lib/check-data';
+// import checkData from './lib/check-data';
 import { createStore } from 'redux';
 import config from './reducers/config.js';
 import { Provider } from 'react-redux';
@@ -35,16 +35,27 @@ class App extends Component {
     );
   }
 }
-var test = `
-  var test = "some javascript code";
-  if(test){
-    console.log("Test exists");
-  } else {
-    console.log("Test does not exist");
-  }
-`;
 
-checkData(test, function(errs){
-  errors = errs;
-  renderView();
-});
+renderView();
+
+// var test = `
+//   var test = "some javascript code";
+//   if(test){
+//     console.log("Test exists");
+//   } else {
+//     console.log("Test does not exist");
+//   }
+//   while(true){
+
+//   }
+//   for(var i = 0; i< 100; i++){
+//     console.log("Test");
+//   }
+// `;
+
+
+
+// checkData(test, function(errs){
+//   errors = errs;
+//   renderView();
+// });

@@ -1,22 +1,28 @@
+import 'babel-polyfill';
+
 //TODO: Expand and/or move to a shared module
 let supportedItems = [
   {
     name: 'Variable Declaration',
+    value: 'VariableDeclaration',
     checked: false,
     disabled: false
   },
   {
     name: 'For Loop',
+    value: 'ForStatement',
     checked: false,
     disabled: false
   },
   {
     name: 'While Loop',
+    value: 'WhileStatement',
     checked: false,
     disabled: false
   },
   {
     name: 'If Statement',
+    value: 'IfStatement',
     checked: false,
     disabled: false
   }
