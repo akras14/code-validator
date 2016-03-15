@@ -28,7 +28,8 @@ let defaultState = {
     first: "none",
     second: "none"
   },
-  text: "//Please type your code here"
+  text: "//Please type your code here",
+  errors: []
 };
 
 function generateList(){
@@ -75,6 +76,7 @@ export default function config(state = defaultState, action) {
       state.text = action.text;
       return state;
     case 'TEXT_VALIDATION':
+      state.errors = action.errors;
       return state;
     default:
       return state;

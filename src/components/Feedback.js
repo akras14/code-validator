@@ -1,8 +1,10 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 
 class Feedback extends Component {
   render() {
-    var feedback, errors = this.props.errors;
+    let { store } = this.context;
+    var state = store.getState();
+    var feedback, errors = state.errors || [];
     if(errors.length > 0) {
       feedback = (
         <div>
@@ -19,8 +21,8 @@ class Feedback extends Component {
   }
 }
 
-Feedback.propTypes = {
-  errors: PropTypes.array.isRequired
+Feedback.contextTypes = {
+  store: React.PropTypes.object
 };
 
 export default Feedback;

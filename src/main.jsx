@@ -7,8 +7,6 @@ import { createStore } from 'redux';
 import config from './reducers/config.js';
 import { Provider } from 'react-redux';
 
-var errors = [];
-
 const store = createStore(config);
 store.subscribe(() => {
   renderView();
@@ -29,7 +27,7 @@ class App extends Component {
       <div>
         <TestConfig/>
         <Editor/>
-        <Feedback errors = { errors } />
+        <Feedback/>
       </div>
     );
   }
