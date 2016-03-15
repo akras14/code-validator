@@ -30,7 +30,9 @@ function debounce(callback, wait){
     if(timeout){
       clearTimeout(timeout);
     }
-    timeout = setTimeout(callback, wait, store, newValue);
+    timeout = setTimeout(function(){
+      callback(store, newValue); //New fuctnion for IE8 Support
+    }, wait);
   };
 }
 
