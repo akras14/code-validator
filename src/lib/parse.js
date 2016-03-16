@@ -22,6 +22,13 @@ function checkLists(data, state){
       }
     }
   });
+
+  whitelist.forEach(reqToken => {
+    let tokenFound = tokens.some(token => reqToken === token.value);
+    if(!tokenFound){
+      errors.push(reqToken + " is required");
+    }
+  });
   return errors;
 }
 
