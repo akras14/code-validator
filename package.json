@@ -19,6 +19,7 @@
     "babel-preset-react": "^6.5.0",
     "brace": "^0.7.0",
     "esprima": "^2.7.2",
+    "esprima-walk": "^0.1.0",
     "react": "^0.14.7",
     "react-ace": "^3.1.0",
     "react-dom": "^0.14.7",

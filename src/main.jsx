@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 
 //Initialize web worker on load, for IE8 support
 import checkData from './lib/check-data';
-checkData({data:{}}, ()=>{});
+checkData({data:{}}, ()=>{}); //IE8 support
 
 const store = createStore(config);
 store.subscribe(() => {
