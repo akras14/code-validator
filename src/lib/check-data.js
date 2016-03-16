@@ -1,3 +1,4 @@
+//Interface to communicate with a webworker
 class Checker {
   constructor(){
     this.worker = new Worker('./build/parse.bundle.js');

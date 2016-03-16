@@ -3,6 +3,7 @@ import AceEditor from 'react-ace';
 import 'brace/mode/javascript';
 import 'brace/theme/monokai';
 
+//Used for IE8 Support instead of Ace editor
 class FakeAceEditor extends React.Component {
   onChange(event){
     this.props.onChange(event.target.value);
@@ -43,7 +44,7 @@ class Editor extends React.Component {
           value={state.text}
         />
       );
-    } else {
+    } else { //Load regular Ace editor
       return (
         <AceEditor
           mode = "javascript"

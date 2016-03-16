@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 
+//Component to provide test structure, including:
+// - whitelist
+// - blacklist
+// - 2 nested conditions
 class Structure extends Component {
   update(source, event){
     let { store } = this.context;

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import checkData from '../lib/check-data';
 
+//Vanila debounce implementation
 function debounce(callback, wait){
   let timeout;
   return function(store, newValue){
@@ -13,6 +14,7 @@ function debounce(callback, wait){
   };
 }
 
+//Check for errors no more than every timeout
 let debouncedErrorCheck = debounce((store, newValue) => {
   var state = store.getState();
   checkData({
@@ -26,6 +28,7 @@ let debouncedErrorCheck = debounce((store, newValue) => {
   });
 }, 200);
 
+//Provide Feedback on the source in the editor
 class Feedback extends Component {
   render() {
     let { store } = this.context;

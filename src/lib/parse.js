@@ -1,6 +1,7 @@
 import * as esprima from 'esprima';
 import walk from 'esprima-walk';
 
+//Validate errors specified via whitelist and blacklist
 function checkLists(data, state){
   let errors = [];
   let tokens = esprima.tokenize(data, {loc: true});
@@ -33,6 +34,8 @@ function checkLists(data, state){
   return errors;
 }
 
+
+//Validate source code structure, basec on nested config provided
 function checkStructure(data, state){
   let errors = [];
   let ast = esprima.parse(data);
@@ -43,15 +46,19 @@ function checkStructure(data, state){
 
     let firstNodes = [];
 
+    //Check first node condition
     walk( ast, node => {
       if(node.type === first) {
         firstNodes.push(node);
       }
     });
 
+    //If first node is not found
     if(firstNodes.length === 0){
       errors.push(first + " is required");
-    } else if(second){
+    } else if(second){ //If second required as well
+
+      //Check all first nodes, to see if any of them have a nested second node
       let secondFound = firstNodes.some(firstNode => {
         let flag = false;
         walk(firstNode, node => {
@@ -61,6 +68,7 @@ function checkStructure(data, state){
         });
         return flag;
       });
+
       if(!secondFound){
         errors.push(second + " is required inside of " + first);
       }
@@ -69,6 +77,8 @@ function checkStructure(data, state){
   return errors;
 }
 
+
+//Webworker interface, to communicate back with the main app
 self.onmessage = function(e) {
   try {
     let errors = [];
