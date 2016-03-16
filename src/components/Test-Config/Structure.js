@@ -26,12 +26,12 @@ class Structure extends Component {
       .map((item,index) => <option key={index} value={item.value}>{item.name}</option>);
 
     return(
-      <div>
+      <div className="config-structure">
         <select value={first} onChange={this.update.bind(this, 'first')}>
           <option value="none">select an option</option>
           {firstItems}
         </select>
-        and inside of it
+        <span className="middle">and inside of it</span>
         <select value={second} onChange={this.update.bind(this, 'second')} disabled={this.props.first === "none"}>
           <option value="none">select an option</option>
           {secondItems}

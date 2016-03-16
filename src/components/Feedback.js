@@ -26,7 +26,7 @@ let debouncedErrorCheck = debounce((store, newValue) => {
       errors: errors
     });
   });
-}, 200);
+}, 100);
 
 //Provide Feedback on the source in the editor
 class Feedback extends Component {

@@ -11,7 +11,11 @@ class TestConfig extends Component {
       <div>
         <List type="Whitelist" items={state.whitelist}/>
         <List type="Blacklist" items={state.blacklist}/>
-        <Structure items={state.structure} first={state.structure.first} second={state.structure.second}/>
+        <Structure
+          items={state.structure}
+          first={state.structure.first}
+          second={state.structure.second}
+        />
       </div>
     );
   }

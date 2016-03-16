@@ -5,7 +5,7 @@ class List extends Component {
     let { store } = this.context;
     let listItems = this.props.items.map((item, index) => {
       return (
-        <span key={index}>
+        <span key={index} className="config-checkbox">
           <input
             type="checkbox"
             name={this.props.type}

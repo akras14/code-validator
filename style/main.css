@@ -1,0 +1,12 @@
+.config-checkbox {
+  padding: 2px;
+  display: inline-block;
+}
+
+.config-structure {
+  padding: 5px 0 10px;
+}
+
+.config-structure .middle {
+  padding: 0 5px;
+}
