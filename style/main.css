@@ -1,5 +1,14 @@
+body {
+  font-family: 'Lato', sans-serif;
+}
+
 .config-checkbox {
   padding: 2px;
+  display: inline-block;
+}
+
+.config-label {
+  width: 70px;
   display: inline-block;
 }
 

@@ -26,7 +26,7 @@ class List extends Component {
     });
     return (
       <div>
-        <b>{this.props.type}:</b>
+        <strong className="config-label" >{this.props.type}:</strong>
         {listItems}
       </div>
     );
