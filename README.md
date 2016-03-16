@@ -24,3 +24,10 @@ Supports IE8 and above
  - Webworkers
 
 All Front End code
+
+## Run in Dev
+
+1. Install Webpack
+2. `npm install`
+3. `webpack`
+4. Serve `index.html` with your web server of choice
