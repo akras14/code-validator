@@ -4,19 +4,23 @@ import 'babel-polyfill';
 let supportedItems = [
   {
     name: 'Variable Declaration',
-    value: 'VariableDeclaration'
+    value: 'VariableDeclaration',
+    token: 'var'
   },
   {
     name: 'For Loop',
-    value: 'ForStatement'
+    value: 'ForStatement',
+    token: 'for'
   },
   {
     name: 'While Loop',
-    value: 'WhileStatement'
+    value: 'WhileStatement',
+    token: 'while'
   },
   {
     name: 'If Statement',
-    value: 'IfStatement'
+    value: 'IfStatement',
+    token: 'if'
   }
 ];
 

@@ -37,7 +37,11 @@ function debounce(callback, wait){
 }
 
 let debouncedOnChange = debounce((store, newValue) => {
-  checkData(newValue, function(errors){
+  var state = store.getState();
+  checkData({
+    newValue,
+    state
+  }, function(errors){
     store.dispatch({
       type: 'TEXT_VALIDATION',
       errors: errors
