@@ -3,8 +3,6 @@ import AceEditor from 'react-ace';
 import 'brace/mode/javascript';
 import 'brace/theme/monokai';
 
-import checkData from '../lib/check-data';
-
 class FakeAceEditor extends React.Component {
   onChange(event){
     this.props.onChange(event.target.value);
@@ -24,31 +22,6 @@ FakeAceEditor.propTypes = {
   value: React.PropTypes.string
 };
 
-function debounce(callback, wait){
-  let timeout;
-  return function(store, newValue){
-    if(timeout){
-      clearTimeout(timeout);
-    }
-    timeout = setTimeout(function(){
-      callback(store, newValue); //New fuctnion for IE8 Support
-    }, wait);
-  };
-}
-
-let debouncedOnChange = debounce((store, newValue) => {
-  var state = store.getState();
-  checkData({
-    newValue,
-    state
-  }, function(errors){
-    store.dispatch({
-      type: 'TEXT_VALIDATION',
-      errors: errors
-    });
-  });
-}, 200);
-
 class Editor extends React.Component {
 
   onChange(newValue) {
@@ -57,7 +30,6 @@ class Editor extends React.Component {
       type: 'TEXT_UPDATE',
       text: newValue
     });
-    debouncedOnChange(store, newValue);
   }
 
   render() {

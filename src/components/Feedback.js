@@ -1,9 +1,38 @@
 import React, {Component} from 'react';
+import checkData from '../lib/check-data';
+
+function debounce(callback, wait){
+  let timeout;
+  return function(store, newValue){
+    if(timeout){
+      clearTimeout(timeout);
+    }
+    timeout = setTimeout(function(){
+      callback(store, newValue); //New fuctnion for IE8 Support
+    }, wait);
+  };
+}
+
+let debouncedErrorCheck = debounce((store, newValue) => {
+  var state = store.getState();
+  checkData({
+    newValue,
+    state
+  }, function(errors){
+    store.dispatch({
+      type: 'TEXT_VALIDATION',
+      errors: errors
+    });
+  });
+}, 200);
 
 class Feedback extends Component {
   render() {
     let { store } = this.context;
     var state = store.getState();
+
+    debouncedErrorCheck(store, state.text);
+
     var feedback, errors = state.errors || [];
     if(errors.length > 0) {
       feedback = (
